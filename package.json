@@ -25,7 +25,7 @@
     "async": "0.2.7",
     "azure-arm-resource": "^1.4.4-preview",
     "ms-rest-azure": "^1.14.3",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "homepage": "https://github.com/Azure-Samples/resource-manager-node-resources-and-groups",
   "repository": {
