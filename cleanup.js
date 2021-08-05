@@ -5,11 +5,11 @@
  */
 "use strict";
 
-var Environment = require("@azure/ms-rest-azure-env");
-var util = require("util");
-var msRestAzure = require("@azure/ms-rest-nodeauth");
-var ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
-const request = require("request");
+const Environment = require("@azure/ms-rest-azure-env");
+const util = require("util");
+const msRestAzure = require("@azure/ms-rest-nodeauth");
+const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
+const axios = require("axios");
 
 const clientIdEnvName = "AZURE_SP_APP_ID";
 const tenantIdEnvName = "AZURE_TENANT_ID";
@@ -18,17 +18,19 @@ const subscriptionIdEnvName = "AZURE_SUBSCRIPTION_ID";
 const armEndpointEnvName = "AZURE_ARM_ENDPOINT";
 
 _validateEnvironmentVariables();
-_validateParameters();
 
 var clientId = process.env[clientIdEnvName];
 var tenantId = process.env[tenantIdEnvName];
 var secret = process.env[secretEnvName];
 var subscriptionId = process.env[subscriptionIdEnvName];
 var armEndpoint = process.env[armEndpointEnvName];
-var resourceGroupName = process.argv[2];
+var resourceGroupName = "azure-sample-rg";
 var resourceClient;
 var map = {};
 
+if (armEndpoint.slice(-1) != "/") {
+  armEndpoint = armEndpoint + "/";
+}
 const fetchUrl = armEndpoint + "metadata/endpoints?api-version=2019-10-01";
 
 function deleteResourceGroup(callback) {
@@ -47,32 +49,13 @@ function _validateEnvironmentVariables() {
   }
 }
 
-function _validateParameters() {
-  if (!process.argv[2]) {
-    throw new Error("Please provide the resource group name by executing the script as follows: \"node cleanup.js <resourceGroupName>\".");
+async function fetchEndpointMetadata() {
+  try {
+      const response = await axios.get(fetchUrl);
+      return response.data;
+  } catch (error) {
+      console.error(error);
   }
-}
-
-function fetchEndpointMetadata() {
-  // Setting URL and headers for request
-  var options = {
-    url: fetchUrl,
-    headers: {
-      "User-Agent": "request"
-    },
-    rejectUnauthorized: false
-  };
-  // Return new promise 
-  return new Promise(function (resolve, reject) {
-    // Do async job
-    request.get(options, function (err, resp, body) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(JSON.parse(body));
-      }
-    });
-  });
 }
 
 function main() {

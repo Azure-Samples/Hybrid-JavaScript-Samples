@@ -21,8 +21,8 @@
   "dependencies": {
     "@azure/arm-resources-profile-2020-09-01-hybrid": "^1.0.0",
     "@azure/ms-rest-azure-env": "^2.0.0",
-    "@azure/ms-rest-nodeauth": "^2.0.2",
-    "async": "0.2.7"
+    "@azure/ms-rest-nodeauth": "^3.0.10",
+    "async": "^3.2.0"
   },
   "homepage": "https://github.com/Azure-Samples/resource-manager-node-resources-and-groups",
   "repository": {
