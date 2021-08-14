@@ -1,8 +1,9 @@
 ---
-Topic: sample
-Languages: Node.js
-Products: azure-sdks
-Services: Azure Stack Hub
+page_type: sample
+Languages: 
+- javascript
+Products: 
+- azure-sdks
 ---
 
 # Official Microsoft Sample
