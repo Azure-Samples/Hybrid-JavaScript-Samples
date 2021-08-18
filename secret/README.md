@@ -1,11 +1,3 @@
----
-page_type: sample
-Languages: 
-- javascript
-Products: 
-- azure-sdks
----
-
 # Official Microsoft Sample
 
 <!-- 
