@@ -13,25 +13,25 @@ const StorageManagementClient = require("@azure/arm-storage-profile-2020-09-01-h
 const NetworkManagementClient = require("@azure/arm-network-profile-2020-09-01-hybrid").NetworkManagementClient;
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const axios = require("axios");
+const config = require("../azureAppSpConfig.json");
 
-const clientIdEnvName = "AZURE_SP_APP_ID";
-const secretEnvName  = "AZURE_SP_APP_SECRET";
-const subscriptionIdEnvName  = "AZURE_SUBSCRIPTION_ID";
-const armEndpointEnvName  = "AZURE_ARM_ENDPOINT";
-const tenantIdEnvName  = "AZURE_TENANT_ID";
-const locationEnvName  = "AZURE_LOCATION";
+const clientIdProp = "clientId";
+const clientSecretProp = "clientSecret";
+const subscriptionIdProp = "subscriptionId";
+const armEndpointProp = "resourceManagerUrl";
+const tenantIdProp = "tenantId";
+const locationProp = "location";
 
-_validateEnvironmentVariables();
+_validateConfigVariables();
 _validateParameters();
 
-var clientId = process.env[clientIdEnvName];
-var secret = process.env[secretEnvName];
-var subscriptionId = process.env[subscriptionIdEnvName];
-var armEndpoint = process.env[armEndpointEnvName];
-var tenantId = process.env[tenantIdEnvName];
-var location = process.env[locationEnvName];
+var clientId = config[clientIdProp];
+var clientSecret = config[clientSecretProp];
+var subscriptionId = config[subscriptionIdProp];
+var armEndpoint = config[armEndpointProp];
+var tenantId = config[tenantIdProp];
+var location = config[locationProp];
 var resourceClient, computeClient, storageClient, networkClient;
-
 var accType = "Standard_LRS";
 var resourceGroupName = "azure-sample-rg";
 var vmName = "testvm";
@@ -103,7 +103,7 @@ function main() {
       map["validateAuthority"] = false;
     }
 
-    msRestAzure.loginWithServicePrincipalSecret(clientId, secret, tenantId, options, function (err, credentials) {
+    msRestAzure.loginWithServicePrincipalSecret(clientId, clientSecret, tenantId, options, function (err, credentials) {
         if (err) return console.log(err);
        
         resourceClient = new ResourceManagementClient(credentials, subscriptionId);
@@ -393,13 +393,14 @@ function createVirtualMachine(nicId, vmImageVersionNumber, callback) {
   computeClient.virtualMachines.createOrUpdate(resourceGroupName, vmName, vmParameters, callback);
 }
 
-function _validateEnvironmentVariables() {
+function _validateConfigVariables() {
   var envs = [];
-  if (!process.env[clientIdEnvName]) envs.push(clientIdEnvName);
-  if (!process.env[armEndpointEnvName]) envs.push(armEndpointEnvName);
-  if (!process.env[secretEnvName]) envs.push(secretEnvName);
-  if (!process.env[subscriptionIdEnvName]) envs.push(subscriptionIdEnvName);
-  if (!process.env[tenantIdEnvName]) envs.push(tenantIdEnvName);
+  if (!config[clientIdProp]) envs.push(clientIdProp);
+  if (!config[clientSecretProp]) envs.push(clientSecretProp);
+  if (!config[armEndpointProp]) envs.push(armEndpointProp);
+  if (!config[locationProp]) envs.push(locationProp);
+  if (!config[subscriptionIdProp]) envs.push(subscriptionIdProp);
+  if (!config[tenantIdProp]) envs.push(tenantIdProp);
   if (envs.length > 0) {
     throw new Error(util.format("please set/export the following environment variables: %s", envs.toString()));
   }
