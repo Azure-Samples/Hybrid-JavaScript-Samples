@@ -1,13 +1,5 @@
 # Official Microsoft Sample
 
-<!-- 
-Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
-
-Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
-
-Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
--->
-
 A sample code to create or update keyvault and create or update secret in a keyvault.
 
 ## Contents
@@ -15,14 +7,8 @@ A sample code to create or update keyvault and create or update secret in a keyv
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
 | `index.js`        | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
 | `package.json`    | Define dependencies.                       |
 | `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
-
-## Prerequisites
-
-Refer to this azure stack doc for more information: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-version-profile-nodejs.
 
 ## Running the sample
 
