@@ -1,14 +1,14 @@
 ---
 page_type: sample
-Languages: 
+languages: 
 - javascript
-Products: 
+products: 
 - azure-sdks
 description: "These samples demonstrate various interaction with Azure Stack Hub."
 urlFragment: Hybrid-JavaScript-Samples
 ---
 
-# Official Microsoft Sample
+# Hybrid-JavaScript-Samples
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
