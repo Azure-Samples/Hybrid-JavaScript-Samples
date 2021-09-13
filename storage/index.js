@@ -259,14 +259,14 @@ function checkNameAvailability(callback) {
 }
 
 function _validateConfigVariables() {
-  var envs = [];
-  if (!config[clientIdProp]) envs.push(clientIdProp);
-  if (!config[clientSecretProp]) envs.push(clientSecretProp);
-  if (!config[armEndpointProp]) envs.push(armEndpointProp);
-  if (!config[locationProp]) envs.push(locationProp);
-  if (!config[subscriptionIdProp]) envs.push(subscriptionIdProp);
-  if (!config[tenantIdProp]) envs.push(tenantIdProp);
-  if (envs.length > 0) {
-    throw new Error(util.format("please set/export the following environment variables: %s", envs.toString()));
+  var missingConfig = [];
+  if (!config[clientIdProp]) missingConfig.push(clientIdProp);
+  if (!config[clientSecretProp]) missingConfig.push(clientSecretProp);
+  if (!config[armEndpointProp]) missingConfig.push(armEndpointProp);
+  if (!config[locationProp]) missingConfig.push(locationProp);
+  if (!config[subscriptionIdProp]) missingConfig.push(subscriptionIdProp);
+  if (!config[tenantIdProp]) missingConfig.push(tenantIdProp);
+  if (missingConfig.length > 0) {
+    throw new Error(util.format("Please set the following configurations: %s", missingConfig.toString()));
   }
 }
