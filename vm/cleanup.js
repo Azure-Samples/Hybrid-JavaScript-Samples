@@ -11,20 +11,21 @@ const msRestAzure = require("@azure/ms-rest-nodeauth");
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const ComputeManagementClient = require("@azure/arm-compute-profile-2020-09-01-hybrid").ComputeManagementClient;
 const axios = require("axios");
+const config = require("../azureAppSpConfig.json");
 
-const clientIdEnvName = "AZURE_SP_APP_ID";
-const secretEnvName  = "AZURE_SP_APP_SECRET";
-const subscriptionIdEnvName  = "AZURE_SUBSCRIPTION_ID";
-const tenantIdEnvName  = "AZURE_TENANT_ID";
-const armEndpointEnvName = "AZURE_ARM_ENDPOINT";
+const clientIdProp = "clientId";
+const clientSecretProp = "clientSecret";
+const subscriptionIdProp = "subscriptionId";
+const armEndpointProp = "resourceManagerUrl";
+const tenantIdProp = "tenantId";
 
 _validateEnvironmentVariables();
 
-var clientId = process.env[clientIdEnvName];
-var tenantId = process.env[tenantIdEnvName];
-var secret = process.env[secretEnvName];
-var subscriptionId = process.env[subscriptionIdEnvName];
-var armEndpoint = process.env[armEndpointEnvName];
+var clientId = config[clientIdProp];
+var tenantId = config[tenantIdProp];
+var secret = config[clientSecretProp];
+var subscriptionId = config[subscriptionIdProp];
+var armEndpoint = config[armEndpointProp];
 var resourceGroupName = "azure-sample-rg";
 var vmName = "testvm";
 var resourceClient, computeClient;
@@ -46,13 +47,13 @@ function deleteResourceGroup(callback) {
 }
 
 function _validateEnvironmentVariables() {
-  var envs = [];
-  if (!process.env[clientIdEnvName]) envs.push(clientIdEnvName);
-  if (!process.env[tenantIdEnvName]) envs.push(tenantIdEnvName);
-  if (!process.env[secretEnvName]) envs.push(secretEnvName);
-  if (!process.env[subscriptionIdEnvName]) envs.push(subscriptionIdEnvName);
-  if (envs.length > 0) {
-    throw new Error(util.format("please set/export the following environment variables: %s", envs.toString()));
+  var missingConfig = [];
+  if (!config[clientIdProp]) missingConfig.push(clientIdProp);
+  if (!config[tenantIdProp]) missingConfig.push(tenantIdProp);
+  if (!config[clientSecretProp]) missingConfig.push(clientSecretProp);
+  if (!config[subscriptionIdProp]) missingConfig.push(subscriptionIdProp);
+  if (missingConfig.length > 0) {
+    throw new Error(util.format("Please set the following configurations: %s", missingConfig.toString()));
   }
 }
 
