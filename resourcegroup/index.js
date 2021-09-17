@@ -94,17 +94,6 @@ function main() {
         },
         function (callback) {
           //Task 2
-          listResourceGroups(function (err, result, request, response) {
-            if (err) {
-              return callback(err);
-            }
-            console.log(util.format("\nResource Groups in subscription %s : \n%s",
-              subscriptionId, util.inspect(result, { depth: null })));
-            callback(null, result);
-          });
-        },
-        function (callback) {
-          //Task 3
           updateResourceGroup(function (err, result, request, response) {
             if (err) {
               return callback(err);
@@ -138,11 +127,6 @@ function createResourceGroup(callback) {
   var groupParameters = { location: location, tags: { sampletag: "sampleValue" } };
   console.log("\nCreating resource group: " + resourceGroupName);
   return resourceClient.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, callback);
-}
-
-function listResourceGroups(callback) {
-  console.log("\nListing all resource groups: ");
-  return resourceClient.resourceGroups.list(callback);
 }
 
 function updateResourceGroup(callback) {

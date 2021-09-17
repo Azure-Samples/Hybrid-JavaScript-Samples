@@ -118,6 +118,9 @@ function main() {
         ///////////////////////////////////////////////////////////////////////////////////
         async.series([
           function (callback) {
+            /////////////////////
+            //Task1: Create VM.//
+            /////////////////////
             console.log("\n>>>>>>>Start of Task1: Create a VM named: " + vmName);
             createVM(function (err, result) {
               if (err) {

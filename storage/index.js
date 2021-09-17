@@ -127,16 +127,6 @@ function main() {
         },
         function (callback) {
           //Task 4
-          listStorageAccounts(function (err, result, request, response) {
-            if (err) {
-              return callback(err);
-            }
-            console.log("\n" + util.inspect(result, { depth: null }));
-            callback(null, result);
-          });
-        },
-        function (callback) {
-          //Task 5
           listStorageAccountKeys(function (err, result, request, response) {
             if (err) {
               return callback(err);
@@ -146,7 +136,7 @@ function main() {
           });
         },
         function (callback) {
-          //Task 6
+          //Task 5
           regenerateStorageAccountKeys(function (err, result, request, response) {
             if (err) {
               return callback(err);
@@ -156,7 +146,7 @@ function main() {
           });
         },
         function (callback) {
-          //Task 7
+          //Task 6
           updateStorageAccount(function (err, result, request, response) {
             if (err) {
               return callback(err);
@@ -166,7 +156,7 @@ function main() {
           });
         },
         function (callback) {
-          //Task 8
+          //Task 7
           checkNameAvailability(function (err, result, request, response) {
             if (err) {
               return callback(err);
@@ -221,11 +211,6 @@ function createStorageAccount(callback) {
 function listStorageAccountsByResourceGroup(callback) {
   console.log("\n-->Listing storage accounts in the resourceGroup : " + resourceGroupName);
   return storageClient.storageAccounts.listByResourceGroup(resourceGroupName, callback);
-}
-
-function listStorageAccounts(callback) {
-  console.log("\n-->Listing storage accounts in the current subscription.");
-  return storageClient.storageAccounts.list(callback);
 }
 
 function listStorageAccountKeys(callback) {
