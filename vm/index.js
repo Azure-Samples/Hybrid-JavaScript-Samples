@@ -153,14 +153,13 @@ function main() {
             //Task3: Poweroff the VM.//
             ///////////////////////////
             console.log("\n>>>>>>>Start of Task3: Poweroff the VM: " + vmName);
-            computeClient.virtualMachines.powerOff(resourceGroupName, vmName, function (err, result) {
+            computeClient.virtualMachines.powerOff(resourceGroupName, vmName, function (err) {
               if (err) {
                 console.log(util.format("\n???????Error in Task3: while powering off the VM:\n%s",
                   util.inspect(err, { depth: null })));
                 callback(err);
               } else {
-                console.log(util.format("\n######End of Task3: Poweroff the VM is successful.\n%s",
-                  util.inspect(result, { depth: null })));
+                console.log(util.format("\n######End of Task3: Poweroff the VM is successful."));
                 callback(null, result);
               }
             });
@@ -170,32 +169,13 @@ function main() {
             //Task4: Start the VM.//
             ////////////////////////
             console.log("\n>>>>>>>Start of Task4: Start the VM: " + vmName);
-            computeClient.virtualMachines.start(resourceGroupName, vmName, function (err, result) {
+            computeClient.virtualMachines.start(resourceGroupName, vmName, function (err) {
               if (err) {
                 console.log(util.format("\n???????Error in Task4: while starting the VM:\n%s",
                   util.inspect(err, { depth: null })));
                 callback(err);
               } else {
-                console.log(util.format("\n######End of Task4: Start the VM is successful.\n%s",
-                  util.inspect(result, { depth: null })));
-                callback(null, result);
-              }
-            });
-          },
-          
-          function (callback) {
-            //////////////////////////////////////////////////////
-            //Task5: Listing All the VMs under the subscription.//
-            //////////////////////////////////////////////////////
-            console.log("\n>>>>>>>Start of Task5: List all vms under the current subscription.");
-            computeClient.virtualMachines.listAll(function (err, result) {
-              if (err) {
-                console.log(util.format("\n???????Error in Task5: while listing all the vms under " +
-                  "the current subscription:\n%s", util.inspect(err, { depth: null })));
-                callback(err);
-              } else {
-                console.log(util.format("\n######End of Task5: List all the vms under the current " +
-                  "subscription is successful.\n%s", util.inspect(result, { depth: null })));
+                console.log(util.format("\n######End of Task4: Start the VM is successful."));
                 callback(null, result);
               }
             });
@@ -213,7 +193,8 @@ function main() {
             }
           console.log("\n###### Exit ######");
           process.exit();
-          });
+          }
+        );
       });
     },
     
@@ -312,7 +293,7 @@ function createVnet(callback) {
 
 async function getSubnetInfo(callback) {
   console.log("\nGetting subnet info for: " + subnetName);
-  // Wait 10 seconds for Vnet creation before getting subnet.
+  // Wait 10 seconds for Vnet creation before getting subnet. Alternatively, add retry code for the following get method.
   await new Promise(r => setTimeout(r, 10000));
   return networkClient.subnets.get(resourceGroupName, vnetName, subnetName, callback);
 }
@@ -329,7 +310,7 @@ function createPublicIP(callback) {
   return networkClient.publicIPAddresses.createOrUpdate(resourceGroupName, publicIPName, publicIPParameters, callback);
 }
 
-function createNIC(subnetInfo, publicIPInfo, callback) {
+async function createNIC(subnetInfo, publicIPInfo, callback) {
   var nicParameters = {
     location: location,
     ipConfigurations: [
@@ -342,6 +323,8 @@ function createNIC(subnetInfo, publicIPInfo, callback) {
     ]
   };
   console.log("\n5.Creating Network Interface: " + networkInterfaceName);
+  // Wait 10 seconds for public IP to be created. Alternatively, add retry code for the following createOrUpdate method.
+  await new Promise(r => setTimeout(r, 10000));
   return networkClient.networkInterfaces.createOrUpdate(resourceGroupName, networkInterfaceName, nicParameters, callback);
 }
 
