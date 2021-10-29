@@ -31,7 +31,7 @@ var tenantId = config[tenantIdProp];
 var location = config[locationProp];
 var resourceClient, storageClient;
 var accType = "Standard_LRS";
-var resourceGroupName = "azure-sample-rg";
+var resourceGroupName = "azure-sample-javascript-storage";
 var storageAccountName = "teststorage";
 var map = {};
 

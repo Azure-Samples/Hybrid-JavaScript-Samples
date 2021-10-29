@@ -26,7 +26,7 @@ var tenantId = config[tenantIdProp];
 var secret = config[clientSecretProp];
 var subscriptionId = config[subscriptionIdProp];
 var armEndpoint = config[armEndpointProp];
-var resourceGroupName = "azure-sample-rg";
+var resourceGroupName = "azure-sample-javascript-secret";
 var vaultName = "azure-sample-kv";
 var resourceClient;
 var keyVaultClient;

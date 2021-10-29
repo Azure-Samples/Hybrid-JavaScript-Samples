@@ -28,7 +28,7 @@ var armEndpoint = config[armEndpointProp];
 var tenantId = config[tenantIdProp];
 var location = config[locationProp];
 var resourceClient;
-var resourceGroupName = "azure-sample-rg";
+var resourceGroupName = "azure-sample-javascript-resourcegroup";
 var map = {};
 
 if (armEndpoint.slice(-1) != "/") {
