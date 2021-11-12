@@ -34,9 +34,9 @@ if (armEndpoint.slice(-1) != "/") {
 }
 const fetchUrl = armEndpoint + "metadata/endpoints?api-version=2019-10-01";
 
-function deleteResourceGroup(callback) {
+async function deleteResourceGroup(callback) {
   console.log("\nStarting to delete resource group: " + resourceGroupName);
-  return resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
+  return await resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
 }
 
 function _validateEnvironmentVariables() {
