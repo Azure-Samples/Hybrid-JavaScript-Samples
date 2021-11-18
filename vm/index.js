@@ -33,7 +33,7 @@ var tenantId = config[tenantIdProp];
 var location = config[locationProp];
 var resourceClient, computeClient, storageClient, networkClient;
 var accType = "Standard_LRS";
-var resourceGroupName = "azure-sample-rg";
+var resourceGroupName = "azure-sample-javascript-vm";
 var vmName = "testvm";
 var storageAccountName = "teststorage";
 var vnetName = "testvnet";
