@@ -26,7 +26,7 @@ var tenantId = config[tenantIdProp];
 var secret = config[clientSecretProp];
 var subscriptionId = config[subscriptionIdProp];
 var armEndpoint = config[armEndpointProp];
-var resourceGroupName = "azure-sample-rg";
+var resourceGroupName = "azure-sample-javascript-vm";
 var vmName = "testvm";
 var resourceClient, computeClient;
 var map = {};
