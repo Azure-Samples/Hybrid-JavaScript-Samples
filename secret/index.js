@@ -7,7 +7,7 @@ const KeyVaultManagementClient = require("@azure/arm-keyvault-profile-2020-09-01
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const util = require("util");
 const axios = require("axios");
-const config = require("../azureAppSpConfig.json");
+const config = require("../azureSecretSpConfig.json");
 
 const clientIdProp = "clientId";
 const clientSecretProp = "clientSecret";

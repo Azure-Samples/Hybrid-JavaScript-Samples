@@ -12,7 +12,7 @@ const msRestAzure = require("@azure/ms-rest-nodeauth");
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const StorageManagementClient = require("@azure/arm-storage-profile-2020-09-01-hybrid").StorageManagementClient;
 const axios = require("axios");
-const config = require("../azureAppSpConfig.json");
+const config = require("../azureSecretSpConfig.json");
 
 const clientIdProp = "clientId";
 const clientSecretProp = "clientSecret";
