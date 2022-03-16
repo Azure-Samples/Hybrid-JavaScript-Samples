@@ -13,7 +13,7 @@ const StorageManagementClient = require("@azure/arm-storage-profile-2020-09-01-h
 const NetworkManagementClient = require("@azure/arm-network-profile-2020-09-01-hybrid").NetworkManagementClient;
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const axios = require("axios");
-const config = require("../azureAppSpConfig.json");
+const config = require("../azureSecretSpConfig.json");
 
 const clientIdProp = "clientId";
 const clientSecretProp = "clientSecret";

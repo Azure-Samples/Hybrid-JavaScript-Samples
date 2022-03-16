@@ -51,10 +51,10 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 ```
 
 ## Setup
-1. Rename `azureAppSpConfig.json.dist` and `azureCertSpConfig.json.dist` to `azureAppSpConfig.json` and `azureCertSpConfig.json`.
+1. Rename `azureSecretSpConfig.json.dist` and `azureCertSpConfig.json.dist` to `azureSecretSpConfig.json` and `azureCertSpConfig.json`.
 1. Fill in the following values in the corresponding JSON files:
 
-Set the following JSON properties in `./azureAppSpConfig.json`.
+Set the following JSON properties in `./azureSecretSpConfig.json`.
 | Variable              | Description                                                 |
 |-----------------------|-------------------------------------------------------------|
 | `clientId`            | Service principal application id                            |
