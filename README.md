@@ -1,7 +1,7 @@
 ---
 page_type: sample
 languages: 
-- javascript
+- typescript
 products: 
 - azure-sdks
 description: "These samples demonstrate various interaction with Azure Stack Hub."
@@ -18,11 +18,11 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-This repository is for Azure Stack Hub JavaScript samples. Each of the sub-directories contain README.md files detailing how to run that sample.
+This repository shows samples on how to use Azure SDK for JavaScript and TypeScript with Azure Stack Hub. Each directory contains a sample in TypeScript with a README on how to run it.
 
 ## Prerequisites
 
-Refer to this azure stack doc for more information: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-version-profile-nodejs.
+Refer to this Azure Stack Hub documentation page for more information: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-version-profile-nodejs.
 
 ### Certificate
 
