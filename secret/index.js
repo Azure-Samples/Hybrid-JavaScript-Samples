@@ -11,9 +11,9 @@ const config = require("../azureSecretSpConfig.json");
 
 const clientIdProp = "clientId";
 const clientSecretProp = "clientSecret";
-const clientObjectIdProp = "clientObjectId";
+const objectIdProp = "objectId";
 const subscriptionIdProp = "subscriptionId";
-const armEndpointProp = "resourceManagerUrl";
+const armEndpointProp = "resourceManagerEndpointUrl";
 const tenantIdProp = "tenantId";
 const locationProp = "location";
 
@@ -21,7 +21,7 @@ _validateConfigVariables();
 
 var clientId = config[clientIdProp];
 var clientSecret = config[clientSecretProp];
-var clientObjectId = config[clientObjectIdProp];
+var objectId = config[objectIdProp];
 var subscriptionId = config[subscriptionIdProp];
 var armEndpoint = config[armEndpointProp];
 var tenantId = config[tenantIdProp];
@@ -41,7 +41,7 @@ function _validateConfigVariables() {
     var missingConfig = [];
     if (!config[clientIdProp]) missingConfig.push(clientIdProp);
     if (!config[clientSecretProp]) missingConfig.push(clientSecretProp);
-    if (!config[clientObjectIdProp]) missingConfig.push(clientObjectIdProp);
+    if (!config[objectIdProp]) missingConfig.push(objectIdProp);
     if (!config[armEndpointProp]) missingConfig.push(armEndpointProp);
     if (!config[locationProp]) missingConfig.push(locationProp);
     if (!config[subscriptionIdProp]) missingConfig.push(subscriptionIdProp);
@@ -112,7 +112,7 @@ function createKeyVault(credentials) {
             "accessPolicies": [
                 {
                     "tenantId": tenantId,
-                    "objectId": clientObjectId,
+                    "objectId": objectId,
                     "permissions": { "secrets": ["all"] }
                 }
             ],
