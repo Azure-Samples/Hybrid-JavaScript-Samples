@@ -56,14 +56,11 @@ async function main() {
 
   const activeDirectoryEndpoint = metadata[0].authentication.loginEndpoint.replace(/\/$/, "");
   const credentialScope = metadata[0].authentication.audiences[0] + "/.default";
-
-  if (activeDirectoryEndpoint.endsWith("adfs")) {
-    config.tenantId = "adfs";
-  }
+  const credentialTenantId = activeDirectoryEndpoint.endsWith("adfs") ? "adfs" : config.tenantId;
 
   // Create credential using a client secret.
   // Other types of credentials can be used for different authentication techniques.
-  const credential = new ClientSecretCredential(config.tenantId, config.clientId, config.clientSecret, {
+  const credential = new ClientSecretCredential(credentialTenantId, config.clientId, config.clientSecret, {
     authorityHost: activeDirectoryEndpoint
   });
 
