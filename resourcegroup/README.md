@@ -1,22 +1,39 @@
-# Official Microsoft Sample
+# hybrid-resources-js-manage-resource-groups
 
-A sample code for managing Azure resources.
+A sample for managing resource groups on Azure Stack Hub:
 
-## Contents
+- Create resource group
+- Update resource group
+- List resource groups
+- Delete resource group
 
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `index.js`        | Sample source code.                        |
-| `package.json`    | Define dependencies.                       |
-| `README.md`       | This README file.                          |
+## Running this Sample
 
-## Running the sample
+To run this sample:
 
-From root folder
-```
-npm install
-node .\index.js
-```
+1. Clone the repository using the following command:
+
+   ```
+   $ git clone https://github.com/Azure-Samples/Hybrid-JavaScript-Samples.git
+   ```
+
+2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal in Azure Stack, see [Create a service principal with an application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret).
+
+3. Copy the settings file `azureSecretSpConfig.json.dist` to `azureSecretSpConfig.json` and fill in the configuration settings from the service principal.
+
+4. Change directory to sample:
+
+   ```
+   $ cd resourcegroup
+   ```
+
+5. Install dependencies, build the TypeScript source file, then run the sample:
+
+   ```
+   $ npm install
+   $ npm run build
+   $ node .
+   ```
 
 ## Contributing
 

@@ -1,53 +1,72 @@
-# Official Microsoft Sample
+# hybrid-compute-js-manage-vm
 
-A sample code to create a virtual machine in Azure.
+A sample for managing virtual machines on Azure Stack Hub:
 
-## Contents
+- Create storage account
+- Create virtual network
+- Create public IP
+- Create network interface
+- Get virtual machine image
+- Create virtual machine
+- Get virtual machine
+- Stop virtual machine
+- Start virtual machine
+- List virtual machines
+- Delete virtual machine
 
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `index.js`        | Sample source code.                        |
-| `package.json`    | Define dependencies.                       |
-| `README.md`       | This README file.                          |
+The sample looks to create the following VM. Ensure that is is available or the sample will not run successfully.
 
-### Virtual Machine
+| Type              | Value             |
+|-------------------|-------------------|
+| Publisher         | Canonical         |
+| Offer             | UbuntuServer      |
+| Sku               | 16.04-LTS         |
 
-The sample currently looks to create the following VM. Make sure it is available or the sample will fail.
+To find available virtual machine images, search for "Marketplace Management" in the administrative portal on your Azure Stack Hub. If the virtual machine image above is not available, click on "Add from Azure" to download it.
 
-| Type              | Value                                                 |
-|-----------------------|-------------------------------------------------------------|
-| PublisherName       | canonical                            |
-| Offer       | UbuntuServer                        |
-| Sku           | 16.04-LTS                                   |
+Alternatively, to use a different virtual machine image, you can edit the virtual machine image constants in `index.ts`:
 
-Alternatively, simply go into the `index.js` and change the values to match a virtual machine that you have available in your Azure Stack environment.
-
-```javascript
-// Ubuntu config
-var publisher = 'Canonical';
-var offer = 'UbuntuServer';
-var sku = '16.04-LTS';
+```typescript
+const imagePublisher = "Canonical";
+const imageOffer = "UbuntuServer";
+const imageSku = "16.04-LTS";
 ```
 
-To find available virtual machines, search for `Marketplace management` in the Azure Stack portal. If no virtual machines are available, click on `Add from Azure` to download a new one.
+For example, if you have the "Windows Server 2016 Datacenter-Pay as you go" marketplace item downloaded, you can set those constants to the following to create a Windows 2016-Datacenter virtual machine:
 
-For example, if you have `Windows Server 2016 Datacenter-Pay as you go` marketplace item, you can set those variables to the following to create a Windows 2016-Datacenter virtual machine:
-
-```javascript
-// Windows config
-var publisher = 'MicrosoftWindowsServer';
-var offer = 'WindowsServer';
-var sku = '2016-Datacenter';
+```typescript
+const imagePublisher = "MicrosoftWindowsServer";
+const imageOffer = "WindowsServer";
+const imageSku = "2016-Datacenter";
 ```
 
-## Running the sample
+## Running this Sample
 
-From root folder
-```
-npm install
-node .\index.js <VM Username> <VM Password>
-```
+To run this sample:
 
+1. Clone the repository using the following command:
+
+   ```
+   $ git clone https://github.com/Azure-Samples/Hybrid-JavaScript-Samples.git
+   ```
+
+2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal in Azure Stack, see [Create a service principal with an application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret).
+
+3. Copy the settings file `azureSecretSpConfig.json.dist` to `azureSecretSpConfig.json` and fill in the configuration settings from the service principal.
+
+4. Change directory to sample:
+
+   ```
+   $ cd vm
+   ```
+
+5. Install dependencies, build the TypeScript source file, then run the sample:
+
+   ```
+   $ npm install
+   $ npm run build
+   $ node .
+   ```
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
