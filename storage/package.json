@@ -18,7 +18,7 @@
     "@azure/arm-resources-profile-2020-09-01-hybrid": "^2.0.0",
     "@azure/arm-storage-profile-2020-09-01-hybrid": "^2.0.0",
     "@azure/identity": "^2.0.4",
-    "@azure/storage-blob": "12.1.2",
+    "@azure/storage-blob": "12.14.0",
     "axios": "^0.26.1"
   },
   "homepage": "https://github.com/Azure-Samples/Hybrid-JavaScript-Samples/tree/master/storage",
