@@ -7,24 +7,25 @@ const KeyVaultManagementClient = require("@azure/arm-keyvault-profile-2020-09-01
 const ResourceManagementClient = require("@azure/arm-resources-profile-2020-09-01-hybrid").ResourceManagementClient;
 const util = require("util");
 const axios = require("axios");
+const config = require("../azureAppSpConfig.json");
 
-const spAppIdEnvName = "AZURE_SP_APP_ID";
-const spObjectIdEnvName = "AZURE_SP_APP_OBJECT_ID";
-const spSecretEnvName = "AZURE_SP_APP_SECRET";
-const tenantIdEnvName = "AZURE_TENANT_ID";
-const subscriptionIdEnvName = "AZURE_SUBSCRIPTION_ID";
-const armEndpointEnvName = "AZURE_ARM_ENDPOINT";
-const locationEnvName = "AZURE_LOCATION";
+const clientIdProp = "clientId";
+const clientSecretProp = "clientSecret";
+const clientObjectIdProp = "clientObjectId";
+const subscriptionIdProp = "subscriptionId";
+const armEndpointProp = "resourceManagerUrl";
+const tenantIdProp = "tenantId";
+const locationProp = "location";
 
-validateEnvironmentVariables();
+_validateConfigVariables();
 
-var clientAppId = process.env[spAppIdEnvName];
-var clientObjectId = process.env[spObjectIdEnvName];
-var clientSecret = process.env[spSecretEnvName];
-var tenantId = process.env[tenantIdEnvName];
-var subscriptionId = process.env[subscriptionIdEnvName];
-var armEndpoint = process.env[armEndpointEnvName];
-var location = process.env[locationEnvName];
+var clientId = config[clientIdProp];
+var clientSecret = config[clientSecretProp];
+var clientObjectId = config[clientObjectIdProp];
+var subscriptionId = config[subscriptionIdProp];
+var armEndpoint = config[armEndpointProp];
+var tenantId = config[tenantIdProp];
+var location = config[locationProp];
 var tenantIdForLogin = tenantId
 var resourceGroupName = "azure-sample-rg";
 var keyVaultName = "azure-sample-kv";
@@ -36,15 +37,15 @@ if (armEndpoint.slice(-1) != "/") {
 }
 const fetchUrl = armEndpoint + "metadata/endpoints?api-version=2019-10-01";
 
-function validateEnvironmentVariables() {
+function _validateConfigVariables() {
     var envs = [];
-    if (!process.env[spAppIdEnvName]) envs.push(spAppIdEnvName);
-    if (!process.env[spObjectIdEnvName]) envs.push(spObjectIdEnvName);
-    if (!process.env[spSecretEnvName]) envs.push(spSecretEnvName);
-    if (!process.env[tenantIdEnvName]) envs.push(tenantIdEnvName);
-    if (!process.env[subscriptionIdEnvName]) envs.push(subscriptionIdEnvName);
-    if (!process.env[armEndpointEnvName]) envs.push(armEndpointEnvName);
-    if (!process.env[locationEnvName]) envs.push(locationEnvName);
+    if (!config[clientIdProp]) envs.push(clientIdProp);
+    if (!config[clientSecretProp]) envs.push(clientSecretProp);
+    if (!config[clientObjectIdProp]) envs.push(clientObjectIdProp);
+    if (!config[armEndpointProp]) envs.push(armEndpointProp);
+    if (!config[locationProp]) envs.push(locationProp);
+    if (!config[subscriptionIdProp]) envs.push(subscriptionIdProp);
+    if (!config[tenantIdProp]) envs.push(tenantIdProp);
     if (envs.length > 0) {
         throw new Error(util.format("please set/export the following environment variables: %s", envs.toString()));
     }
@@ -92,7 +93,7 @@ function setEnvironment(metadata) {
 }
 
 function loginWithSP(envOptions) {
-    return msRestNodeAuth.loginWithServicePrincipalSecret(clientAppId, clientSecret, tenantIdForLogin, envOptions);
+    return msRestNodeAuth.loginWithServicePrincipalSecret(clientId, clientSecret, tenantIdForLogin, envOptions);
 }
 
 function createResourceGroup(credentials) {
