@@ -375,7 +375,6 @@ function createVirtualMachine(nicId, vmImageVersionNumber, callback) {
     }
   };
   console.log("\n6.Creating Virtual Machine: " + vmName);
-  console.log("\n VM create parameters: " + util.inspect(vmParameters, { depth: null }));
   computeClient.virtualMachines.createOrUpdate(resourceGroupName, vmName, vmParameters, callback);
 }
 
