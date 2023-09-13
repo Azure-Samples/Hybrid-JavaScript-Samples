@@ -4,6 +4,8 @@ Languages:
 - javascript
 Products: 
 - azure-sdks
+description: "These samples demonstrate various interaction with the Azure Stack Hub using Golang."
+urlFragment: Hybrid-JavaScript-Samples
 ---
 
 # Official Microsoft Sample
