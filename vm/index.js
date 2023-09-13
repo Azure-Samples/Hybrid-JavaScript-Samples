@@ -35,7 +35,7 @@ var resourceClient, computeClient, storageClient, networkClient;
 var accType = "Standard_LRS";
 var resourceGroupName = "azure-sample-javascript-vm";
 var vmName = "testvm";
-var storageAccountName = "teststorage";
+var storageAccountName = "vmsamplestorage";
 var vnetName = "testvnet";
 var subnetName = "testsubnet";
 var publicIPName = "testpip";

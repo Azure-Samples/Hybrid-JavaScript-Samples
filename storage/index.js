@@ -32,7 +32,7 @@ var location = config[locationProp];
 var resourceClient, storageClient;
 var accType = "Standard_LRS";
 var resourceGroupName = "azure-sample-javascript-storage";
-var storageAccountName = "teststorage";
+var storageAccountName = "storagesamplestorage";
 var map = {};
 
 if (armEndpoint.slice(-1) != "/") {
