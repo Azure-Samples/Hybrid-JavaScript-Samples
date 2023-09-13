@@ -15,7 +15,7 @@ const config = require("../azureSecretSpConfig.json");
 const clientIdProp = "clientId";
 const clientSecretProp = "clientSecret";
 const subscriptionIdProp = "subscriptionId";
-const armEndpointProp = "resourceManagerUrl";
+const armEndpointProp = "resourceManagerEndpointUrl";
 const tenantIdProp = "tenantId";
 const locationProp = "location";
 
