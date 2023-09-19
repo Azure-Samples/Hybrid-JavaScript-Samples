@@ -19,7 +19,7 @@
     "@azure/arm-network-profile-2020-09-01-hybrid": "^2.0.0",
     "@azure/arm-resources-profile-2020-09-01-hybrid": "^2.0.0",
     "@azure/arm-storage-profile-2020-09-01-hybrid": "^2.0.0",
-    "@azure/identity": "^2.0.4",
+    "@azure/identity": "^3.3.0",
     "axios": "^0.26.1"
   },
   "homepage": "https://github.com/Azure-Samples/Hybrid-JavaScript-Samples/tree/master/vm",
