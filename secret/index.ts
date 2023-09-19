@@ -101,7 +101,7 @@ async function main() {
     // Set secret.
     // Using the secret client (data plane) for set and get operations.
     const keyVaultUrl = `https://${keyVaultName}.${metadata[0].suffixes.keyVaultDns}`;
-    const secretClient = new SecretClient(keyVaultUrl, credential, { serviceVersion: "7.1" });
+    const secretClient = new SecretClient(keyVaultUrl, credential, { serviceVersion: "7.1", disableChallengeResourceVerification: true});
 
     console.log("Setting a secret with name:", secretName, "and value:", secretValue);
 
