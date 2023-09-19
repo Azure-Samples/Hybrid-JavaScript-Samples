@@ -76,7 +76,8 @@ async function main() {
   // Create credential using a client secret.
   // Other types of credentials can be used for different authentication techniques.
   const credential = new ClientSecretCredential(credentialTenantId, config.clientId, config.clientSecret, {
-    authorityHost: activeDirectoryEndpoint
+    authorityHost: activeDirectoryEndpoint,
+    disableInstanceDiscovery: true
   });
 
   const clientOptions = {
