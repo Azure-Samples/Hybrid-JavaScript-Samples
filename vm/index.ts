@@ -7,10 +7,10 @@
 import { randomBytes } from "crypto";
 import * as util from "util";
 import axios from "axios";
-import { ComputeManagementClient } from "@azure/arm-compute-profile-2020-09-01-hybrid";
-import { NetworkManagementClient } from "@azure/arm-network-profile-2020-09-01-hybrid";
-import { ResourceManagementClient } from "@azure/arm-resources-profile-2020-09-01-hybrid";
-import { StorageManagementClient } from "@azure/arm-storage-profile-2020-09-01-hybrid";
+import { ComputeManagementClient } from "@azure/arm-compute";
+import { NetworkManagementClient } from "@azure/arm-network";
+import { ResourceManagementClient } from "@azure/arm-resources";
+import { StorageManagementClient } from "@azure/arm-storage";
 import { ClientSecretCredential } from "@azure/identity";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -15,10 +15,10 @@
   "main": "./index.js",
   "license": "MIT",
   "dependencies": {
-    "@azure/arm-compute-profile-2020-09-01-hybrid": "^2.0.0",
-    "@azure/arm-network-profile-2020-09-01-hybrid": "^2.0.0",
-    "@azure/arm-resources-profile-2020-09-01-hybrid": "^2.0.0",
-    "@azure/arm-storage-profile-2020-09-01-hybrid": "^2.0.0",
+    "@azure/arm-compute": "^21.2.0",
+    "@azure/arm-network": "^32.2.0",
+    "@azure/arm-resources-profile": "^5.2.0",
+    "@azure/arm-storage": "^18.2.0",
     "@azure/identity": "^3.3.0",
     "axios": "^0.26.1"
   },
