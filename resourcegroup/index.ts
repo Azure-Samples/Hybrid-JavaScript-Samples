@@ -6,7 +6,7 @@
 
 import * as util from "util";
 import axios from "axios";
-import { ResourceManagementClient } from "@azure/arm-resources-profile-2020-09-01-hybrid";
+import { ResourceManagementClient } from "@azure/arm-resources";
 import { ClientSecretCredential } from "@azure/identity";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
