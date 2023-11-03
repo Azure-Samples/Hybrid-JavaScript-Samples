@@ -6,8 +6,8 @@
 
 import * as util from "util";
 import axios from "axios";
-import { ResourceManagementClient } from "@azure/arm-resources-profile-2020-09-01-hybrid";
-import { StorageManagementClient } from "@azure/arm-storage-profile-2020-09-01-hybrid";
+import { ResourceManagementClient } from "@azure/arm-resources";
+import { StorageManagementClient } from "@azure/arm-storage";
 import { ClientSecretCredential } from "@azure/identity";
 import { BlobServiceClient, StorageSharedKeyCredential } from "@azure/storage-blob";
 

@@ -6,8 +6,8 @@
 
 import * as util from "util";
 import axios from "axios";
-import { KeyVaultManagementClient } from "@azure/arm-keyvault-profile-2020-09-01-hybrid";
-import { ResourceManagementClient } from "@azure/arm-resources-profile-2020-09-01-hybrid";
+import { KeyVaultManagementClient } from "@azure/arm-keyvault";
+import { ResourceManagementClient } from "@azure/arm-resources";
 import { ClientSecretCredential } from "@azure/identity";
 import { SecretClient } from "@azure/keyvault-secrets";
 

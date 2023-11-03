@@ -15,8 +15,8 @@
   "main": "./index.js",
   "license": "MIT",
   "dependencies": {
-    "@azure/arm-resources-profile-2020-09-01-hybrid": "^2.0.0",
-    "@azure/arm-storage-profile-2020-09-01-hybrid": "^2.0.0",
+    "@azure/arm-resources": "^5.2.0",
+    "@azure/arm-storage": "^18.2.0",
     "@azure/identity": "^3.3.0",
     "@azure/storage-blob": "12.14.0",
     "axios": "^0.26.1"
